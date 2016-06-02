@@ -32,8 +32,15 @@ Once the application is created, you need to host it, Microsoft Azure provides e
 
 *Note:* You can use the Cortana prebuilt apps in case you are trying to write a personal assistant bot and hence you won't need specialized trainings.
 
-##Step 3 - Writing your bot brain
+##Step 3 - Writing your bot's brain
 This is the piece where you actually require to code something. Once a user types in a sentence and LUIS resolves it into Intents and Entities then someone needs to define the actions/responses which needs to be taken based on the Intents. 
 
-For e.g. If you ask the bot for the orders of customer ABC Corporation, then LUIS will resolve it into a possible Intent say GetOrderDetails and the Entity would be ABC Corporation. Fetching the actual order from some endpoint/datastore is 
+For e.g. If you ask the bot for the orders of customer ABC Corporation, then LUIS will resolve it into a possible Intent say GetOrderDetails and the Entity would be ABC Corporation. Fetching the actual order from some endpoint/datastore and serve it back to the user is what you do in this piece.
+
+That precisely means that you can do the following here:
+* Write the intent handlers here. 
+* In case more information is requried to fulfil the intent, you would write the prompts here to ask for the required information. 
+* Respond back to the user
+* Manage information in sessions
+* Make backend calls to data stores or endpoints
 
