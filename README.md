@@ -14,6 +14,8 @@ For the impatient you who would like to see things working before diving deep in
 * type : node <js filename>
 * Now your bot is running, you can converse with it saying hi/hello etc
 
+To run the connector bot, you need to host it on Modulus or any other public URL and add the URL to the Microsoft Bot Framework.
+
 #Microsoft Bot Framework
 The framework offers tools and services to build and connect intelligent bots through various messaging channels. Most of the connectivity and messaging infrastructure is already built in to the framework, yet it provides enough flexibility to write up your own logic on how to respond to the various Intents.
 
