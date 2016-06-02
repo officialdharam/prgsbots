@@ -56,3 +56,12 @@ Hosting a nodejs application on modulus is pretty easy as mentioned below:
 * Use the CLI command to upload and start your project.
 
 For more, refer to the [modulus docs] (https://help.modulus.io/)
+
+Once you have hosted the bot on modulus or any other service (or your own public URL). You can link this URL to the Microsoft Bot Framework details page for your bot.
+
+# Testing the Bot
+It is good to test on dev system to skip the numerous deployment cycles. This can be done by using a Text Bot, this is essentially the same business logic with just one difference, the bot responds and interacts on command line. Also, you can use the node debugger tools with this bot.
+
+This is good for initial level of testing. Once this is done, Microsoft Bot Framework provides an emulator, which works the same way as a messaging channel. 
+
+You can provide the Bot's hosted URL and API Key corresponding to this bot (from the Microsoft Bot Framework) and test it in the Emulator which is a desktop client.
