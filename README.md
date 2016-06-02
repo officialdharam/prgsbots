@@ -44,3 +44,15 @@ That precisely means that you can do the following here:
 * Manage information in sessions
 * Make backend calls to data stores or endpoints
 
+### Using Progress Modulus to host your bot
+You can write the bot either in Node or C#. I chose to write in Node and hosted it on Modulus. To know more about node, please check out the [official website] (https://nodejs.org/en/)
+
+Here is a link to [Progress Modulus] (https://my.modulus.io/)
+Hosting a nodejs application on modulus is pretty easy as mentioned below:
+* Create a modulus trial account
+* Download the modulus CLI
+* Write your node app (a JS file named app.js)
+* Write a package.json file
+* Use the CLI command to upload and start your project.
+
+For more, refer to the [modulus docs] (https://help.modulus.io/)
