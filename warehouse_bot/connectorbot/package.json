@@ -1,0 +1,15 @@
+{
+  "name" : "prgsbot",
+  "version" : "0.0.1",
+  "main" : "prgsbot.js",
+  "description" : "Progress Warehouse Bot, answers to Warehouse related queries",
+  "license":"ISC",
+  "author":"dprasad@progress.com",
+  "repository":"https://github.com/officialdharam/prgsbots",
+  "readme":"https://github.com/officialdharam/prgsbots/blob/master/README.md",
+  "dependencies" : {    
+    "restify" : "^4.0.4",
+	"botbuilder" : "^0.10.0",
+	"http" : "0.0.0"
+  }
+}
