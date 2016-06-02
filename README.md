@@ -4,6 +4,16 @@ This repository contains code to write bots using Microsoft bot framework. This 
 * warehouse_bot : answers to queries related to item sales.
 * notification_bot : which triggers notification to the intended users based on some configuration
 
+#How to run the examples
+For the impatient you who would like to see things working before diving deep inside.
+* Install nodejs
+* Clone the [git repo] (https://github.com/officialdharam/prgsbots/)
+* Each of the directories contain a textbot and a connector bot
+* On your command prompt navigate to any of the text bot directory
+* type : npm install and wait for successfull installation
+* type : node <js filename>
+* Now your bot is running, you can converse with it saying hi/hello etc
+
 #Microsoft Bot Framework
 The framework offers tools and services to build and connect intelligent bots through various messaging channels. Most of the connectivity and messaging infrastructure is already built in to the framework, yet it provides enough flexibility to write up your own logic on how to respond to the various Intents.
 
