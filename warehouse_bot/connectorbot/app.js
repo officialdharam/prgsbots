@@ -1,7 +1,6 @@
 var http = require('http');
 var restify = require('restify');
 var builder = require('botbuilder');
-var base64 = require('node-base64-image');
 var dialog = new builder.LuisDialog('https://api.projectoxford.ai/luis/v1/application?id=c5150c0f-10ce-47e3-b94a-630cf8f9ef89&subscription-key=d366dae09f4341598189fc1b8a52fcfd');
 
 // Create bot and add dialogs
@@ -13,7 +12,17 @@ bot.add('/', dialog);
 // Handling un recognized conversations.
 dialog.on('None', function (session, args) {
 	console.log("In the None Intent")	;
-	session.send("I am sorry! Perhaps my responses are limited. Currently, I can answer : \n 1.	Sales stats for individual items");		
+	session.send("I am sorry! I am just a bot. Perhaps I am not programmed to respond to this command.");		
+});
+
+dialog.on('Greetings', function (session, args) {
+	console.log("In the Greetings Intent")	;
+	session.send("Hello! I am the warehouse bot. You can ask me about the sales report of any item.");		
+});
+
+dialog.on('Close', function (session, args) {
+	console.log("In the Close Intent")	;
+	session.send("Thank you very much! It was nice chatting with you.");		
 });
 
 dialog.on('ItemSale', 

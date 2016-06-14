@@ -1,5 +1,5 @@
 {
-  "name" : "prgsbot",
+  "name" : "warehousebot",
   "version" : "0.0.1",
   "main" : "prgsbot.js",
   "description" : "Progress Warehouse Bot, answers to Warehouse related queries",

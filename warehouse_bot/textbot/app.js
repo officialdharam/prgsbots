@@ -12,7 +12,17 @@ bot.add('/', dialog);
 // Handling un recognized conversations.
 dialog.on('None', function (session, args) {
 	console.log("In the None Intent")	;
-	session.send("I am sorry! Perhaps my responses are limited. Currently, I can answer : \n 1.	Sales stats for individual items");		
+	session.send("I am sorry! I am just a bot. Perhaps I am not programmed to respond to this command.");		
+});
+
+dialog.on('Greetings', function (session, args) {
+	console.log("In the Greetings Intent")	;
+	session.send("Hello! I am the warehouse bot. You can ask me about the sales report of any item.");		
+});
+
+dialog.on('Close', function (session, args) {
+	console.log("In the Close Intent")	;
+	session.send("Thank you very much! It was nice chatting with you.");		
 });
 
 dialog.on('ItemSale', 
@@ -84,9 +94,8 @@ dialog.on('ItemSale',
 
 
 function makeHTTPURL(duration){
-	var months = ["january","february","march","april","may","june","july","august","september","october","november","december", "last month"];
-	var years = ["2010","2011","2012","2013","2014","2015","2016","last year", "this year"];
-	var specialDurations = ["this quarter", "last quarter", "last 6 months"];
+	var months = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+	var years = ["2010","2011","2012","2013","2014","2015","2016","last year"];
 	var index = months.indexOf(duration.toLowerCase());
 	
 	if(index > 0){
@@ -95,9 +104,6 @@ function makeHTTPURL(duration){
 	}else if (years.indexOf(duration.toLowerCase()) > 0 ){
 		index = years.indexOf(duration.toLowerCase()) + 1;
 		return s3URL + "/yearly/"+index;
-	}else if(specialDurations.indexOf(duration.toLowerCase())){
-		index = specialDurations.indexOf(duration.toLowerCase()) + 1;
-		return s3URL + "/spcl/"+index;		
 	}
 }
 
