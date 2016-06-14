@@ -24,27 +24,13 @@ String.prototype.format = function() {
     return formatted;
 };
 
-
 // Handling un recognized conversations.
-dialog.on('None', function (session, args) {
-	console.log("In the None Intent")	;
+dialog.on('None', function (session, args) {	
+	session.send("I am sorry! Perhaps my responses are limited. Currently, I can answer : \n 1.	Customer's Phone Number. \n 1.	Customer's Primary Contact. \n 1.	Customer's Credit Limit. \n 1.	Customer's Balance \n 1.	Customer's Sales Representative");	
+	printUserData(session.userData);
 	session.userData.CUSTOMER_ID = undefined;
-	session.userData.CUSTOMER_NAME = undefined;	
-	session.send("I am sorry! I am just a bot. Perhaps I am not programmed to respond to this command.");		
-});
-
-dialog.on('Greetings', function (session, args) {
-	console.log("In the Greetings Intent")	;
-	session.userData.CUSTOMER_ID = undefined;
-	session.userData.CUSTOMER_NAME = undefined;	
-	session.endDialog("Hello! I am the office bot. You can ask me about \n 1.	Customer's Phone Number. \n 1.	Customer's Primary Contact. \n 1.	Customer's Credit Limit. \n 1.	Customer's Balance \n 1.	Customer's Sales Representative");		
-});
-
-dialog.on('Close', function (session, args) {
-	console.log("In the Close Intent")	;
-	session.userData.CUSTOMER_ID = undefined;
-	session.userData.CUSTOMER_NAME = undefined;	
-	session.endDialog("Thank you very much! It was nice chatting with you.");		
+	session.userData.CUSTOMER_NAME = undefined;		
+	printUserData(session.userData);
 });
 
 dialog.on('GetPhoneNumber', 
@@ -106,7 +92,7 @@ dialog.on('GetPrimaryContact',
 	function(session, args){
 		printUserData(session.userData);
 		var customerId = session.userData.CUSTOMER_ID;
-		var primaryContact = session.userData.CONTACT;
+		var primaryContact = session.userData.PRIMARY_CONTACT;
 		var customerName = session.userData.CUSTOMER_NAME;
 		
 		var entities = args.entities;
@@ -457,11 +443,51 @@ dialog.on('OrderDetail', function(session, args){
 	req.end();
 });
 
+dialog.on('UpdateAddress', 
+[
+    function (session, args) {
+		//console.log(" DIALOG DATA "+JSON.stringify(session.dialogData));
+        session.userData.INTENT = 'UpdateAddress';
+		var entities = args.entities;
+		var identifier;
+		var newAddress;
+		var url;
+		
+		if(entities.length > 0){
+			
+			for(var i = 0 ; i < entities.length; i++){
+				var e1 = entities[i].entity;
+				if(e1.type == "Address"){
+					newAddress = e1.entity;
+				}else if(e1.type == "Identity::ID"){
+					identifier = e1.entity;
+				}
+			}
+		}	
+		if(identifier == undefined){
+			identifier = session.userData.ORDER_ID;
+		}else{
+			session.userData.ORDER_ID = identifier;
+		}
+		
+		if(newAddress == undefined)	{
+			builder.Prompts.text(session, "What is the new address you want me to update to?");
+		}
+    },    
+    function (session, results) {
+		//console.log(" DIALOG DATA "+JSON.stringify(session.dialogData));
+        if (results.response) {
+            session.userData.newAddress = results.response;
+        }
+		var respString = addressUpdateTemplate.replace("{Ordernum}",session.userData.ORDER_ID);
+		respString = respString.replace("{newShippingAddress}",session.userData.newAddress);			
+        session.send(respString);
+    }
+]
+);
+
 dialog.onDefault(function(session){
-	console.log("In the None Intent")	;
-	session.userData.CUSTOMER_ID = undefined;
-	session.userData.CUSTOMER_NAME = undefined;	
-	session.endDialog("I am sorry! I am just a bot. Perhaps I am not programmed to respond to this command.");
+	session.send("I am sorry! Perhaps my responses are limited. Currently, I can answer : \n 1.	Customer's Phone Number. \n 1.	Customer's Primary Contact. \n 1.	Customer's Credit Limit. \n 1.	Customer's Balance \n 1.	Customer's Sales Representative");	
 });
 
 function makeHTTPGETCall(session, pathName, successFn, errorFn, information){
