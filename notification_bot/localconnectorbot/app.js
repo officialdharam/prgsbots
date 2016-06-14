@@ -10,13 +10,12 @@ var customerPath = "/oebot/rest/oebot1/Customer?filter=";
 var orderPath = "/oebot/rest/oebot1/Order?filter=";
 var portName = 8810;
 
-
 // Create bot and add dialogs
-var bot = new builder.BotConnectorBot({ appId: 'notfbot', appSecret: '9c8126e3faf547828cb6d81b21450102' });
+var bot = new builder.BotConnectorBot();
 var orderid;
 bot.add('/', dialog);
 
-var reviewTemplate = "The order is placed by our customer {CUSTOMER_NAME}. You can contact their representative {CONTACT_PERSON} at {PHONE_NUMBER}. Their credit limit is {CREDIT_LIMIT} and their current balance is {BALANCE}. \n Would you like to approve it?";
+var reviewTemplate = "The order is placed by our customer {CUSTOMER_NAME}. You can contact their representative {CONTACT_PERSON} at {PHONE_NUMBER}. Their credit limit is {CREDIT_LIMIT} and their current balance is {BALANCE}.";
 
 // Handling un recognized conversations.
 dialog.on('None', function (session, args) {
@@ -25,7 +24,7 @@ dialog.on('None', function (session, args) {
 });
 
 dialog.on('Notify', 
-	function(session, args){
+	function(session, args){			
 		console.log('in notify ');
 		session.send('we just got an urgent order. Wanna review it?');		
 	}
