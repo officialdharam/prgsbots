@@ -75,31 +75,29 @@ function notify(mode, oid){
 	console.log('begin dialog');
 	orderid = oid;
 	console.log(orderid +" orderid");
-	if(mode == "skype"){
-		console.log("skype");
-		bot.beginDialog({
-			to: { "address": "8:live:officialdharam", "channelId": "skype" , "id": "7JitRpa2At5", "isBot": false},
-			from: { "address": "notfbot", "channelId": "skype", "id": "notfbot", "isBot": true},
-			text: "Notify Usecase"
-		}, '/');
-	}else if(mode == "phone"){
-		bot.beginDialog({
-			to: { "address": "+16175383601", "channelId": "sms" , "id": "7JitRpa2At5", "isBot": false},
-			from: { "address": "+12292990653", "channelId": "sms", "id": "notfbot", "isBot": true},
-			text: "Notify Usecase"
-		}, '/');
-	}else if(mode == 'emulator'){
-		bot.beginDialog({
-			to: { "address": "User1", "channelId": "emulator" , "id": "7JitRpa2At5", "isBot": false},
-			from: { "address": "testbot", "channelId": "emulator", "id": "testbot", "isBot": true},
-			text: "Notify Usecase"
-		}, '/');
-	}else if(mode == 'slack'){
-		bot.beginDialog({
-			to: { "address": "U0DNBNJQJ", "channelId": "slack" , "id": "7JitRpa2At5", "isBot": false},
-			from: { "address": "notfbot", "channelId": "slack", "id": "notfbot", "isBot": true},
-			text: "Notify Usecase"
-		}, '/');
+	
+	var arr = ["8:live:officialdharam","8:growoncloud"];
+	for(var i = 0 ; i < arr.length ; i++){
+		if(mode == "skype"){
+			console.log("skype");
+			bot.beginDialog({
+				to: { "address": arr[i], "channelId": "skype" , "id": "7JitRpa2At5", "isBot": false},
+				from: { "address": "notfbot", "channelId": "skype", "id": "notfbot", "isBot": true},
+				text: "Notify Usecase"
+			}, '/');
+		}else if(mode == "phone"){
+			bot.beginDialog({
+				to: { "address": "+16175383601", "channelId": "sms" , "id": "7JitRpa2At5", "isBot": false},
+				from: { "address": "+12292990653", "channelId": "sms", "id": "notfbot", "isBot": true},
+				text: "Notify Usecase"
+			}, '/');
+		}else if(mode == 'emulator'){
+			bot.beginDialog({
+				to: { "address": "User1", "channelId": "emulator" , "id": "7JitRpa2At5", "isBot": false},
+				from: { "address": "testbot", "channelId": "emulator", "id": "testbot", "isBot": true},
+				text: "Notify Usecase"
+			}, '/');
+		}
 	}
 }
 

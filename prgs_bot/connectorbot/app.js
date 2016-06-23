@@ -34,7 +34,7 @@ dialog.on('None', function (session, args) {
 });
 
 dialog.on('Greetings', function (session, args) {
-	console.log("In the Greetings Intent")	;
+	console.log("In the Greetings Intent " +JSON.stringify(session.message.from));
 	session.userData.CUSTOMER_ID = undefined;
 	session.userData.CUSTOMER_NAME = undefined;	
 	session.endDialog("Hello! I am the office bot. You can ask me about \n 1.	Customer's Phone Number. \n 1.	Customer's Primary Contact. \n 1.	Customer's Credit Limit. \n 1.	Customer's Balance \n 1.	Customer's Sales Representative");		
