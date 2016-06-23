@@ -16,7 +16,7 @@ var bot = new builder.BotConnectorBot({ appId: 'notfbot', appSecret: '9c8126e3fa
 var orderid;
 bot.add('/', dialog);
 
-var reviewTemplate = "The order is placed by our customer {CUSTOMER_NAME}. You can contact their representative {CONTACT_PERSON} at {PHONE_NUMBER}. Their credit limit is {CREDIT_LIMIT} and their current balance is {BALANCE}. \n Would you like to approve it?";
+var reviewTemplate = 'For test ! The order is placed by our customer {CUSTOMER_NAME}. You can contact their representative <a href="mailto:{EMAIL_ADDRESS}">{CONTACT_PERSON}</a> at <a href="tel:{PHONE_NUMBER}"> {PHONE_NUMBER_TXT} </a>. Their credit limit is {CREDIT_LIMIT} and their current balance is {BALANCE}. \n Would you like to approve it?';
 
 // Handling un recognized conversations.
 dialog.on('None', function (session, args) {
@@ -106,8 +106,15 @@ function notify(mode, oid){
 
 function prepareReviewResponse(customerName, phoneNumber, contactPerson, creditLimit, balance){
 	var respTemplate  = reviewTemplate;
+	var emailAddress = contactPerson.replace(/ /g,'')+'@gmail.com';
+	var phone = phoneNumber.replace(/ /g,'');
+	phone = phone.replace(/-/g,'');
+	phone = phone.replace(/\(/g,'');
+	phone = phone.replace(/\)/g,'');	
 	respTemplate = respTemplate.replace("{CUSTOMER_NAME}", customerName);
-	respTemplate = respTemplate.replace("{PHONE_NUMBER}", phoneNumber);
+	respTemplate = respTemplate.replace("{PHONE_NUMBER}", phone);
+	respTemplate = respTemplate.replace("{PHONE_NUMBER_TXT}", phoneNumber);
+	respTemplate = respTemplate.replace("{EMAIL_ADDRESS}", emailAddress);
 	respTemplate = respTemplate.replace("{CONTACT_PERSON}", contactPerson);
 	respTemplate = respTemplate.replace("{CREDIT_LIMIT}", creditLimit);
 	respTemplate = respTemplate.replace("{BALANCE}", balance);
