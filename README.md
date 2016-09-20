@@ -4,7 +4,11 @@ This repository contains code to write bots using Microsoft bot framework. This 
 * warehouse_bot : answers to queries related to item sales.
 * notification_bot : which triggers notification to the intended users based on some configuration
 
-#How to run the examples
+# Associated blog entries
+* DZone - http://dzone.com/articles/using-chatbots-to-improve-user-engagement
+* Progress Labs - http://developer.telerik.com/topics/progress-labs/using-chatbots-improve-user-engagement-part-1-2/
+
+# How to run the examples
 For the impatient you who would like to see things working before diving deep inside.
 * Install nodejs
 * Clone the [git repo] (https://github.com/officialdharam/prgsbots/)
@@ -16,7 +20,7 @@ For the impatient you who would like to see things working before diving deep in
 
 To run the connector bot, you need to host it on Modulus or any other public URL and add the URL to the Microsoft Bot Framework.
 
-#Microsoft Bot Framework
+# Microsoft Bot Framework
 The framework offers tools and services to build and connect intelligent bots through various messaging channels. Most of the connectivity and messaging infrastructure is already built in to the framework, yet it provides enough flexibility to write up your own logic on how to respond to the various Intents.
 
 Refer to the [Bot Framework Documentation] (http://docs.botframework.com/)
@@ -25,7 +29,7 @@ The Framework provides integration to many messaging channels including slack, s
 
 You can view all possible messaging channel integration on the Bot details page.
 
-#Getting Started
+# Getting Started
 Below is the list of components or services you need to write your first real bot. A simple bot can just be created with the Microsoft Bot Framework. However, creating a real bot which can be used in context of businesses would require some coding at yoru end. 
 
 ## Step 1 - Getting acquainted with Microsoft Bot Framework
